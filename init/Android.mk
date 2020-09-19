@@ -21,8 +21,8 @@ include $(CLEAR_VARS)
 LOCAL_C_INCLUDES := \
     system/core/base/include \
     system/core/init
-LOCAL_MODULE := libinit_ugg
+LOCAL_MODULE := libinit_ulysse
 LOCAL_MODULE_TAGS := optional
-LOCAL_SRC_FILES := init_ugg.cpp
+LOCAL_SRC_FILES := init_ulysse.cpp
 
 include $(BUILD_STATIC_LIBRARY)

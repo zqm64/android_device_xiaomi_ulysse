@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/xiaomi/ugg
+LOCAL_PATH := device/xiaomi/ulysse
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
@@ -44,11 +44,14 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE :=  2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
-TARGET_KERNEL_CONFIG := ugg_defconfig
+TARGET_KERNEL_CONFIG := ulysse_defconfig
 TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8937
 
 # ANT
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
+
+# Asserts
+TARGET_OTA_ASSERT_DEVICE := ulysse,ugglite,ugg
 
 # Audio
 AUDIO_FEATURE_ENABLED_ALAC_OFFLOAD := true
@@ -116,7 +119,7 @@ BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS += \
     hardware/cyanogen/cmhw \
-    device/xiaomi/ugg/cmhw
+    device/xiaomi/ulysse/cmhw
 
 # CNE / DPM
 BOARD_USES_QCNE := true
@@ -162,9 +165,9 @@ TARGET_NO_RPC := true
 TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(LOCAL_PATH)/android_filesystem_config.h
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_ugg
+TARGET_INIT_VENDOR_LIB := libinit_ulysse
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
-TARGET_RECOVERY_DEVICE_MODULES := libinit_ugg
+TARGET_RECOVERY_DEVICE_MODULES := libinit_ulysse
 
 # Tap2Wake
 TARGET_TAP_TO_WAKE_NODE := "/proc/gesture/onoff"
@@ -179,7 +182,7 @@ TARGET_USES_MEDIA_EXTENSIONS := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 25765043200 # 25765059584 - 16384
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 10332634112
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
@@ -226,4 +229,4 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
--include vendor/xiaomi/ugg/BoardConfigVendor.mk
+-include vendor/xiaomi/ulysse/BoardConfigVendor.mk

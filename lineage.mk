@@ -14,12 +14,12 @@
 # limitations under the License.
 #
 
-$(call inherit-product, device/xiaomi/ugg/full_ugg.mk)
+$(call inherit-product, device/xiaomi/ulysse/full_ulysse.mk)
 
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
-PRODUCT_NAME := lineage_ugg
+PRODUCT_NAME := lineage_ulysse
 BOARD_VENDOR := Xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi

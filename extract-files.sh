@@ -18,7 +18,7 @@
 set -e
 
 export VENDOR=xiaomi
-export DEVICE=ugg
+export DEVICE=ulysse
 
 function extract() {
     for FILE in `egrep -v '(^#|^$)' $1`; do
