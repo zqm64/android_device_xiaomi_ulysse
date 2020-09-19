@@ -170,7 +170,7 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 TARGET_RECOVERY_DEVICE_MODULES := libinit_ulysse
 
 # Tap2Wake
-TARGET_TAP_TO_WAKE_NODE := "/proc/gesture/onoff"
+TARGET_TAP_TO_WAKE_NODE := "/dev/input/event2"
 
 # Keymaster
 TARGET_PROVIDES_KEYMASTER := true
