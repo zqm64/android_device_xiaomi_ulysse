@@ -35,6 +35,9 @@
 #include "log.h"
 #include "util.h"
 
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
+
 using android::base::Trim;
 
 char const *heapstartsize;
@@ -43,6 +46,36 @@ char const *heapsize;
 char const *heapminfree;
 char const *heapmaxfree;
 char const *large_cache_height;
+
+
+void property_override(char const prop[], char const value[])
+{
+    prop_info *pi;
+
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else
+        __system_property_add(prop, strlen(prop), value, strlen(value));
+}
+
+void property_override_dual(char const system_prop[], char const vendor_prop[], char const value[])
+{
+    property_override(system_prop, value);
+    property_override(vendor_prop, value);
+}
+
+void set_device_ugglite()
+{
+    property_override_dual("ro.product.device", "ro.product.vendor.device", "ugglite");
+    property_override_dual("ro.product.model", "ro.product.vendor.model", "Redmi Note 5A Lite");
+}
+
+void set_device_ugg()
+{
+    property_override_dual("ro.product.device", "ro.product.vendor.device", "ugg");
+    property_override_dual("ro.product.model", "ro.product.vendor.model", "Redmi Note 5A Prime");
+}
 
 static void init_alarm_boot_properties()
 {
@@ -92,6 +125,9 @@ void check_device()
         heapminfree = "4m";
         heapmaxfree = "8m";
 	large_cache_height = "2048";
+
+        // set device name to ugg
+        set_device_ugg();
     } else if (sys.totalram > 2048ull * 1024 * 1024) {
         // from - phone-xxhdpi-3072-dalvik-heap.mk
         heapstartsize = "8m";
@@ -100,6 +136,9 @@ void check_device()
         heapminfree = "512k";
 	heapmaxfree = "8m";
         large_cache_height = "1024";
+
+        // set device name to ugg
+        set_device_ugg();
     } else {
         // from - phone-xxhdpi-2048-dalvik-heap.mk
         heapstartsize = "16m";
@@ -108,6 +147,9 @@ void check_device()
         heapminfree = "2m";
         heapmaxfree = "8m";
         large_cache_height = "1024";
+
+        // set device name to ugglite
+        set_device_ugglite();
    }
 }
 
