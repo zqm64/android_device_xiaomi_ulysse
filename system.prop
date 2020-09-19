@@ -206,8 +206,8 @@ persist.timed.enable=true
 net.tcp.2g_init_rwnd=10
 
 #min/max cpu in core control
-ro.core_ctl_min_cpu=4
-ro.core_ctl_max_cpu=8
+ro.core_ctl_min_cpu=2
+ro.core_ctl_max_cpu=4
 
 #set device emmc size
 ro.emmc_size=32G
