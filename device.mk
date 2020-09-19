@@ -257,6 +257,7 @@ init.qcom.factory.rc \
 init.qcom.sdio.sh \
 init.qti.ims.sh \
 init.baseband.sh \
+init.disable-fingerprint.sh
 
 # RIL
 PRODUCT_PACKAGES += \

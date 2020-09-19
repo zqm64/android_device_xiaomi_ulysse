@@ -1302,3 +1302,15 @@ on property:persist.sys.runin=disable
 #on property:sys.audio_ftm_loopback=0
 #    stop mm_audio_ftm
 # chenying End
+
+service no-fp /init.disable-fingerprint.sh
+    class main
+    user root
+    group root
+    oneshot
+    disabled
+
+on property:sys.boot_completed=1 && ro.product.device=ugglite
+    stop gx_fpd
+    stop fingerprintd
+    start no-fp
